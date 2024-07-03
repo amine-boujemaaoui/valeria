@@ -26,6 +26,8 @@ const fetchProduct = async (slug: string) => {
   return product;
 };
 
+export const dynamic = "force-dynamic";
+
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
   const product: fullProduct = await fetchProduct(params.slug);
 

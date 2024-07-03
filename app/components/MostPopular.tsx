@@ -19,6 +19,8 @@ async function getPopular() {
   return products;
 }
 
+export const dynamic = "force-dynamic";
+
 const MostPopular = async () => {
   const products: simplifiedProduct[] = await getPopular();
   return (

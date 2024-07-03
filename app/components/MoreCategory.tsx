@@ -20,6 +20,8 @@ const fetchCategory = async (categoryParam: string) => {
   return category;
 };
 
+export const dynamic = "force-dynamic";
+
 const MoreCategory = async ({ category }: { category: string }) => {
   const products: simplifiedProduct[] = await fetchCategory(category);
 

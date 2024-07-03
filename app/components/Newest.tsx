@@ -19,6 +19,8 @@ async function getNewest() {
   return products;
 }
 
+export const dynamic = "force-dynamic";
+
 const Newest = async () => {
   const products: simplifiedProduct[] = await getNewest();
   return (
