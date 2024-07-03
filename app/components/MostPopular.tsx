@@ -6,7 +6,7 @@ import { client } from "../lib/sanity";
 import { ArrowRight } from "lucide-react";
 import ProductCarousel from "./ProductCarousel";
 
-async function getNewest() {
+async function getPopular() {
   const query = `*[_type == "product"][0...7]{
         _id,
         name,
@@ -19,14 +19,14 @@ async function getNewest() {
   return products;
 }
 
-const Newest = async () => {
-  const products: simplifiedProduct[] = await getNewest();
+const MostPopular = async () => {
+  const products: simplifiedProduct[] = await getPopular();
   return (
     <div>
       <div className='mx-auto max-w-2xl px-4 py-8 sm:py-16 lg:max-w-7xl lg:px-8'>
         <div className='flex justify-between items-center'>
           <h2 className='text-2xl font-bold tracking-tight text-foreground'>
-            Our newest products
+            Our Most Popular Products
           </h2>
           <Link href='/all' className='text-primary flex items-center gap-x-1'>
             See more
@@ -44,4 +44,4 @@ const Newest = async () => {
   );
 };
 
-export default Newest;
+export default MostPopular;

@@ -6,27 +6,29 @@ import { client } from "../lib/sanity";
 import { ArrowRight } from "lucide-react";
 import ProductCarousel from "./ProductCarousel";
 
-async function getNewest() {
-  const query = `*[_type == "product"][0...7]{
+const fetchCategory = async (categoryParam: string) => {
+  const query = `*[_type == "product" && category->name == "${categoryParam}"]{
         _id,
         name,
         price,
+        price_id,
+        "imageUrl": images[0].asset->url,
         "slug": slug.current,
         "categoryName": category->name,
-        "imageUrl": images[0].asset->url
-    } | order(_createdAt desc)`;
-  const products = await client.fetch(query);
-  return products;
-}
+    }`;
+  const category = await client.fetch(query, { categoryParam });
+  return category;
+};
 
-const Newest = async () => {
-  const products: simplifiedProduct[] = await getNewest();
+const MoreCategory = async ({ category }: { category: string }) => {
+  const products: simplifiedProduct[] = await fetchCategory(category);
+
   return (
     <div>
       <div className='mx-auto max-w-2xl px-4 py-8 sm:py-16 lg:max-w-7xl lg:px-8'>
         <div className='flex justify-between items-center'>
           <h2 className='text-2xl font-bold tracking-tight text-foreground'>
-            Our newest products
+            More products for {category}
           </h2>
           <Link href='/all' className='text-primary flex items-center gap-x-1'>
             See more
@@ -44,4 +46,4 @@ const Newest = async () => {
   );
 };
 
-export default Newest;
+export default MoreCategory;
