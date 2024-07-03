@@ -1,5 +1,3 @@
-"use server";
-
 import AddToBag from "@/app/components/AddToBag";
 import Checkout from "@/app/components/Checkout";
 import ImageGallery from "@/app/components/ImageGallery";
