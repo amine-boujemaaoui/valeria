@@ -28,7 +28,11 @@ const fetchProduct = async (slug: string) => {
 
 export const dynamic = "force-dynamic";
 
-const ProductPage = async ({ params }: { params: { slug: string } }) => {
+export default async function ProductPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const product: fullProduct = await fetchProduct(params.slug);
 
   return (
@@ -105,4 +109,3 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
   );
 };
 
-export default ProductPage;

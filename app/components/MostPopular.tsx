@@ -21,7 +21,7 @@ async function getPopular() {
 
 export const dynamic = "force-dynamic";
 
-const MostPopular = async () => {
+export default async function MostPopular() {
   const products: simplifiedProduct[] = await getPopular();
   return (
     <div>
@@ -46,4 +46,3 @@ const MostPopular = async () => {
   );
 };
 
-export default MostPopular;
