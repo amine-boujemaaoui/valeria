@@ -1,5 +1,3 @@
-"use server";
-
 import Link from "next/link";
 import { simplifiedProduct } from "../interfaces";
 import { client } from "../lib/sanity";

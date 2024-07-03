@@ -1,5 +1,3 @@
-"use server";
-
 import MoreCategory from "../components/MoreCategory";
 import MostPopular from "../components/MostPopular";
 
