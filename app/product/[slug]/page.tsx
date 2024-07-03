@@ -10,6 +10,7 @@ import { client } from "@/app/lib/sanity";
 import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 
+export const dynamic = "force-dynamic";
 
 const fetchProduct = async (slug: string) => {
   const query = `*[_type == "product" && slug.current == "${slug}"][0]{
@@ -25,8 +26,6 @@ const fetchProduct = async (slug: string) => {
   const product = await client.fetch(query, { slug });
   return product;
 };
-
-export const dynamic = "force-dynamic";
 
 export default async function ProductPage({
   params,
@@ -107,5 +106,4 @@ export default async function ProductPage({
       </div>
     </MaxWidthWrapper>
   );
-};
-
+}

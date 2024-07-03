@@ -6,6 +6,8 @@ import { client } from "../lib/sanity";
 import { ArrowRight } from "lucide-react";
 import ProductCarousel from "./ProductCarousel";
 
+export const dynamic = "force-dynamic";
+
 async function getNewest() {
   const query = `*[_type == "product"][0...7]{
         _id,
@@ -18,8 +20,6 @@ async function getNewest() {
   const products = await client.fetch(query);
   return products;
 }
-
-export const dynamic = "force-dynamic";
 
 export default async function Newest () {
   const products: simplifiedProduct[] = await getNewest();
